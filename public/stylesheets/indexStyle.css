@@ -1,0 +1,21 @@
+div.container {
+    font-family: Gill Sans, sans-serif;
+    text-align: center;
+}
+
+img {
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.btn {
+    background-color: rgb(67, 136, 216);
+}
+
+.btn :hover {
+    background-color: rgb(196, 219, 238);
+}
+/** make own buttons so that you can do theme colors

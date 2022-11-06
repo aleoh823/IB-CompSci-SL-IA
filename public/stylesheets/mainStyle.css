@@ -1,0 +1,39 @@
+form {
+    border: solid 2px lightgrey;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form:focus-within {
+    border-color: orange;
+}
+
+tr:hover {
+    background-color: #F0F0F0;
+}
+
+body {
+    font-family: Gill Sans, sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+body {
+    font-size: 20px;
+}
+
+img {
+    height: 220px;
+    display: block;
+    padding-top: 20px;
+}
+
+
+
+
