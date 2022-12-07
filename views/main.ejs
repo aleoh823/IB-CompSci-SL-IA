@@ -27,70 +27,71 @@
                 <thead>
 
                     <tr>
+                        <th>Event</th>
                         <th>Date</th>
-                        <th>Location</th>
                         <th>Time</th>
+                        <th>Location</th>
                         <th>Available Slots</th>
+                        <th>Description</th>
                         <th></th>
                     </tr>
 
                 </thead>
                 <tbody>
-
+                    <% for (let i = 0; i < inventory.length; i++) { %>
                     <tr>
-                        <td>11/01/22</td>
-                        <td></td>
-                        <td></td>
-                        <td>Meal Preparation and Packaging
-                            <br>10 of 22 slots filled
+                        <td><%= inventory[i].event %></td>
+                        <td><%= inventory[i].date %></td>
+                        <td><%= inventory[i].time %></td>
+                        <td><%= inventory[i].location %></td>
+                        <td><%= inventory[i].avail_slots %>
                         </td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light" href="/main/signup">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
+                        <td><%= inventory[i].description %></td>
+                        <td><a class="btn-small waves-effect waves-light" href=<%="/main/signup/" + inventory[i].event_id%> >
+                            <i class="material-icons right">edit</i>
+                            Info/Edit
+                        </a>
+                        <a class="btn-small waves-effect waves-light red" href="/main/signup/<%= inventory[i].event_id %>/delete">
+                            <i class="material-icons right">delete</i>
+                            Delete
+                        </a></td>
                     </tr>
-
-                    <tr>
-                        <td>11/05/22</td>
-                        <td></td>
-                        <td></td>
-                        <td>Dinner Preparation and Clean up
-                            <br>9 of 15 slots filled
-                        </td>
-                        <td>
-                            <a class="btn-small waves-effect waves-light" href="/main/signup">
-                                <i class="material-icons right">edit</i>
-                                Info/Edit
-                            </a>
-                            <a class="btn-small waves-effect waves-light red">
-                                <i class="material-icons right">delete</i>
-                                Delete
-                            </a>
-                        </td>
-                    </tr>
+                    <% } %>
 
                 </tbody>
             </table>
         </div>
 
-        <div class="section" id="stuffAdd">
-            <h2>Add stuff:</h2>
-            <form>
+        <div class="section" id="mainAdd">
+            <h2>Add Event:</h2>
+            <form method="post" action="/main">
                 <div class="row">
+
                     <div class="input-field col s6">
-                        <label for="nameInput">Item Name:</label>
+                        <label for="nameInput">Event Name:</label>
                         <input type="text" name="name" id="nameInput" class="validate" data-length="32" required>
                     </div>
+
                     <div class="input-field col s6">
-                        <label for="quantityInput">Item Quantity:</label>
-                        <input type="number" name="quantity" id="quantityInput" value=1 required>
+                        <label for="dateInput">Date:</label>
+                        <input type="number" name="date" id="dateInput" value=1 required>
                     </div>
+
+                    <div class="input-field col s6">
+                        <label for="timeInput">Time:</label>
+                        <input type="number" name="time" id="timeInput" value=1 required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="locationInput">Location:</label>
+                        <input type="text" name="location" id="locationInput" class="validate" data-length="32" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="avail_slotsInput">Available Slots:</label>
+                        <input type="number" name="avail_slots" id="avail_slotsInput" value=1 required>
+                    </div>
+
                 </div>
                 <button class="btn waves-effect waves-light" type="submit">
                     <i class="material-icons right">send</i>

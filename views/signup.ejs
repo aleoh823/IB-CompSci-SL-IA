@@ -23,28 +23,32 @@
             </a>
             <table>
                 <tr>
+                    <th>Event:</th>
+                    <td><%= event %></td>
+
+                </tr>
+                <tr>
                     <th>Date:</th>
-                    <td>11/01/22</td>
-                </tr>
-                <tr>
-                    <th>Volunteers Needed:</th>
-                    <td>22</td>
-
-                </tr>
-                <tr>
-                    <th>Location:</th>
-                    <td></td>
-
+                    <td><%= date %></td>
                 </tr>
                 <tr>
                     <th>Time:</th>
-                    <td></td>
+                    <td><%= time %></td>
+                </tr>
+                <tr>
+                    <th>Location:</th>
+                    <td><%= location %></td>
 
                 </tr>
                 <tr>
-                    <th>Available Slots:</th>
+                    <th>Volunteers Needed:</th>
+                    <td><%= avail_slots %></td>
+
+                </tr>
+                <tr>
+                    <th>Description:</th>
                     <td>
-                        Meal Preparation and Packaging
+                        <%= description %>
                     </td>
                 </tr>
             </table>
@@ -54,7 +58,7 @@
                 <i class="material-icons right">edit</i>
                 Edit
             </a>
-            <a class="btn-large waves-effect waves-light red right">
+            <a class="btn-large waves-effect waves-light red right" href="/main/signup/<%=id%>/delete">
                 <i class="material-icons right">delete</i>
                 Delete
             </a>
@@ -65,24 +69,43 @@
 
             <div class="modal-content">
 
-                <h2>Edit event:</h2>
-                <form>
+                <h2>Edit Event:</h2>
+                <form method="post" action="/main/signup/<%=id%>">
+
                     <div class="row">
                         <div class="input-field col s6">
-                            <label for="nameInput">Event Date:</label>
-                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" required>
+                            <label for="nameInput">Event Name:</label>
+                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" value="<%= event %>"required>
                         </div>
+
                         <div class="input-field col s6">
-                            <label for="quantityInput">Volunteers Needed:</label>
-                            <input type="number" name="quantity" id="quantityInput" value=1 required>
+                            <label for="dateInput">Date:</label>
+                            <input type="number" name="date" id="dateInput" value="<%= date %>" required>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <label for="timeInput">Time:</label>
+                            <input type="number" name="time" id="timeInput" value="<%= time %>" required>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <label for="locationInput">Location:</label>
+                            <input type="text" name="location" id="locationInput" class="validate" data-length="32" value="<%= location %>" required>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <label for="vol_slotsInput">Volunteer Slots:</label>
+                            <input type="number" name="vol_slots" id="vol_slotsInput" value="<%= avail_slots %>" required>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="descriptionInput">Available Slots/Description:</label>
-                            <input type="text" name="description" id="descriptionInput" data-length="100">
+                            <label for="descriptionInput">Description:</label>
+                            <input type="text" name="description" id="descriptionInput" data-length="100" value="<%= description %>">
                         </div>
                     </div>
+
                     <div class="modal-footer">
                         <button class="btn waves-effect waves-light " type="submit">
                             <i class="material-icons right">send</i>
@@ -90,6 +113,7 @@
                         </button>
                         <button class="modal-close waves-effect waves-green btn-flat">Never Mind</button>
                     </div>
+
                 </form>
             </div>
 
