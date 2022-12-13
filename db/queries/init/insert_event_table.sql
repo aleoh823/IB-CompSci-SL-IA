@@ -1,5 +1,5 @@
 -- Insert new row into event table
 INSERT INTO `event` 
-    (`event`, `date`, `time`, `location`, `avail_slots`, `description`) 
+    (`event`, `date`, `f_time`, `t_time`, `location`, `avail_slots`, `description`) 
 VALUES 
-    (?, ?, ?, ?, ?, ?);
+    (?, ?, ?, ?, ?, ?, ?);

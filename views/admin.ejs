@@ -47,15 +47,62 @@
                         <td><%= inventory[i].avail_slots %>
                         </td>
                         <td><%= inventory[i].description %></td>
-                        <td><a class="btn-small waves-effect waves-light" href=<%="/main/signup/" + inventory[i].event_id%> >
+                        <td><a class="btn-small waves-effect waves-light" href=<%="/admin/details/" + inventory[i].event_id%> >
                             <i class="material-icons right">edit</i>
-                            Signup
+                            Info/Edit
+                        </a>
+                        <a class="btn-small waves-effect waves-light red" href="/admin/details/<%= inventory[i].event_id %>/delete">
+                            <i class="material-icons right">delete</i>
+                            Delete
                         </a></td>
                     </tr>
                     <% } %>
 
                 </tbody>
             </table>
+        </div>
+
+        <div class="section" id="mainAdd">
+            <h2>Add Event:</h2>
+            <form method="post" action="/admin">
+                <div class="row">
+
+                    <div class="input-field col s6">
+                        <label for="nameInput">Event Name:</label>
+                        <input type="text" name="name" id="nameInput" class="validate" data-length="32" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="dateInput">Date:</label>
+                        <input type="date" name="date" id="dateInput" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="f_timeInput">Start Time:</label>
+                        <input type="time" name="f_time" id="f_timeInput" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="t_timeInput">End Time:</label>
+                        <input type="time" name="t_time" id="t_timeInput" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="locationInput">Location:</label>
+                        <input type="text" name="location" id="locationInput" class="validate" data-length="32" required>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="avail_slotsInput">Available Slots:</label>
+                        <input type="number" name="avail_slots" id="avail_slotsInput" required>
+                    </div>
+
+                </div>
+                <button class="btn waves-effect waves-light" type="submit">
+                    <i class="material-icons right">send</i>
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
     

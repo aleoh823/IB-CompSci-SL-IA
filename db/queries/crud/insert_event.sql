@@ -1,4 +1,4 @@
 INSERT INTO event
-    (event, date, time, location, avail_slots)
+    (event, date, f_time, t_time, location, avail_slots)
 VALUES
-    (?, ?, ?, ?, ?)
+    (?, ?, ?, ?, ?, ?)

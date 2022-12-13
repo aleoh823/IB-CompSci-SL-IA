@@ -1,6 +1,6 @@
 SELECT 
-    event, date, time, location, avail_slots, description
+    event, DATE_FORMAT(date, "%m/%d/%y") as date, f_time, t_time, location, avail_slots, description
 FROM
     event
-WHERE 
+ORDER BY 
     event_id = ?

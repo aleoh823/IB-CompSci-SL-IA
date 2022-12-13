@@ -3,7 +3,8 @@ UPDATE
 SET
     event = ?,
     date = ?,
-    time = ?,
+    f_time = ?,
+    t_time = ?,
     location = ?,
     avail_slots = ?,
     description = ?

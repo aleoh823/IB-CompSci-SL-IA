@@ -16,7 +16,8 @@ const create_event_table_sql = `
         event_id int NOT NULL AUTO_INCREMENT,
         event varchar(150) NOT NULL,
         date date NOT NULL,
-        time time NOT NULL,
+        f_time time NOT NULL,
+        t_time time NOT NULL,
         location varchar(45) NOT NULL,
         avail_slots varchar(150) NOT NULL,
         description varchar(150) DEFAULT NULL,
@@ -29,11 +30,11 @@ db.execute(create_event_table_sql);
 
 const insert_event_table_sql = `
     INSERT INTO event 
-        (event, date, time, location, avail_slots, description) 
+        (event, date, f_time, t_time, location, avail_slots, description) 
     VALUES 
-        (?, ?, ?, ?, ?, ?);
+        (?, ?, ?, ?, ?, ?, ?);
 `
-db.execute(insert_event_table_sql, ['Cooking and Packaging', '2022-05-24', '02:22', 'Ridgewood Church', '20', null]);
+db.execute(insert_event_table_sql, ['Cooking and Packaging', '2022-05-24', '02:22', `03:22`, 'Ridgewood Church', '20', null]);
 
 db.execute(insert_event_table_sql, ['Cooking only', '2022-06-03', '02:22', 'No Fuss Lunch Kitchen', '20', null]);
 

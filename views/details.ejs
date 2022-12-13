@@ -17,36 +17,42 @@
     <!-- Actual page content! -->
     <div class="container">
         <div class="section flow-text" id="stuffDetail">
-            <h1>Signup For:</h1>
-            <a class="btn-small waves-effect waves-light" href="/main">
+            <h1>Event Details:</h1>
+            <a class="btn-small waves-effect waves-light" href="/admin">
                 <i class="material-icons left">arrow_back</i>Return to Dates
             </a>
             <table>
                 <tr>
                     <th>Event:</th>
-                    <td><%= data.event %></td>
+                    <td><%= event %></td>
 
                 </tr>
                 <tr>
                     <th>Date:</th>
-                    <td><%= data.date + " " + data.f_time + " - " + data.t_time %></td>
+                    <td><%= date %></td>
+                </tr>
+                <tr>
+                    <th>Start Time:</th>
+                    <td><%= f_time %></td>
+                </tr>
+                <tr>
+                    <th>End Time:</th>
+                    <td><%= t_time %></td>
                 </tr>
                 <tr>
                     <th>Location:</th>
-                    <td><%= data.location %></td>
+                    <td><%= location %></td>
 
                 </tr>
                 <tr>
                     <th>Volunteers Needed:</th>
-                    <td><%= data.avail_slots %></td>
-                    <td><a class="btn-small waves-effect waves-light modal-trigger" href="#volunteerView" >
-                        <i class="material-icons center">account_circle</i>
-                    </a></td>
+                    <td><%= avail_slots %></td>
+
                 </tr>
                 <tr>
                     <th>Description:</th>
                     <td>
-                        <%= data.description %>
+                        <%= description %>
                     </td>
                 </tr>
             </table>
@@ -54,7 +60,11 @@
         <div class="section" id="stuffControls">
             <a class="btn-large waves-effect waves-light orange left modal-trigger" href="#stuffEdit">
                 <i class="material-icons right">edit</i>
-                Signup
+                Edit
+            </a>
+            <a class="btn-large waves-effect waves-light red right" href="/admin/details/<%=id%>/delete">
+                <i class="material-icons right">delete</i>
+                Delete
             </a>
         </div>
 
@@ -63,40 +73,46 @@
 
             <div class="modal-content">
 
-                <h2>Signup:</h2>
-                <form method="post" action="/main/signup/<%=data.event_id%>">
+                <h2>Edit Event:</h2>
+                <form method="post" action="/admin/details/<%=id%>">
 
                     <div class="row">
                         <div class="input-field col s6">
-                            <label for="fNameInput">First Name:</label>
-                            <input type="text" name="fName" id="fNameInput" class="validate" data-length="32" value="<%=  %>"required>
+                            <label for="nameInput">Event Name:</label>
+                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" value="<%= event %>"required>
                         </div>
 
                         <div class="input-field col s6">
-                            <label for="lNameInput">Last Name:</label>
-                            <input type="text" name="lName" id="lNameInput" value="<%= %>" required>
+                            <label for="dateInput">Date:</label>
+                            <input type="date" name="date" id="dateInput" value="<%= date %>" required>
                         </div>
 
                         <div class="input-field col s6">
-                            <label for="emailInput">Email:</label>
-                            <input type="email" name="email" id="emailInput" value="<%=  %>" required>
+                            <label for="f_timeInput">Start Time:</label>
+                            <input type="time" name="f_time" id="f_timeInput" value="<%= f_time %>" required>
                         </div>
 
                         <div class="input-field col s6">
-                            <label for="phoneInput">Phone:</label>
-                            <input type="number" name="phone" id="phoneInput" value="<%=  %>" required>
+                            <label for="t_timeInput">End Time:</label>
+                            <input type="time" name="t_time" id="t_timeInput" value="<%= t_time %>" required>
                         </div>
 
                         <div class="input-field col s6">
-                            <label for="volunteers">Quantity:</label>
-                            <input type="number" name="volunteers" id="volunteersInput" value="<%= %>" required>
+                            <label for="locationInput">Location:</label>
+                            <input type="text" name="location" id="locationInput" class="validate" data-length="32" value="<%= location %>" required>
                         </div>
 
                         <div class="input-field col s6">
-                            <label for="commentInput">Comments:</label>
-                            <input type="text" name="comment" id="commentInput" class="validate" data-length="32" value="<%=  %>">
+                            <label for="vol_slotsInput">Volunteer Slots:</label>
+                            <input type="number" name="vol_slots" id="vol_slotsInput" value="<%= avail_slots %>" required>
                         </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="descriptionInput">Description:</label>
+                            <input type="text" name="description" id="descriptionInput" data-length="100" value="<%= description %>">
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -108,34 +124,6 @@
                     </div>
 
                 </form>
-            </div>
-
-        </div>
-
-        <div class="modal" id="volunteerView">
-
-            <div class="modal-content">
-
-                <h2>Volunteers:</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Volunteers</th>
-                            <th>Comment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (let i = 0; i < inventory1.length; i++) { %>
-                            <tr>
-                                <td><%= inventory1[i].fName %></td>
-                                <td><%= inventory1[i].volunteers %></td>
-                                <td><%= inventory1[i].comment %></td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                   
-                </table>
             </div>
 
         </div>
