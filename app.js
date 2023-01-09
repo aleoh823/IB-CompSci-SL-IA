@@ -51,7 +51,9 @@ app.get( "/admin", ( req, res ) => {
 
 const read_event_sql = `
     SELECT 
-        event_id, event, DATE_FORMAT(date, "%m/%d/%y") as date, f_time, t_time, location, avail_slots, description
+        event_id, event, DATE_FORMAT(date, "%m/%d/%y") as date, DATE_FORMAT(date, "%Y-%m-%d") as detail_date, 
+        TIME_FORMAT(f_time, "%I:%i %p") as f_time, TIME_FORMAT(t_time, "%I:%i %p") as t_time, TIME_FORMAT(f_time, "%H:%i:%S") as df_time, TIME_FORMAT(t_time, "%H:%i:%S") as dt_time,
+        location, avail_slots, description
     FROM
         event
     WHERE 
@@ -201,12 +203,12 @@ const update_event_sql = `
     WHERE
         event_id = ?
 `
-app.post("/main/details/:id", ( req, res ) => {
+app.post("/admin/details/:id", ( req, res ) => {
     db.execute(update_event_sql, [req.body.name, req.body.date, req.body.f_time, req.body.t_time, req.body.location, req.body.vol_slots, req.body.description, req.params.id], (error, results) => {
         if (error)
             res.status(500).send(error); //Internal Server Error
         else {
-            res.redirect(`/main/details/${req.params.id}`);
+            res.redirect(`/admin/details/${req.params.id}`);
         }
     });
 })

@@ -33,11 +33,11 @@
                 </tr>
                 <tr>
                     <th>Start Time:</th>
-                    <td><%= f_time %></td>
+                    <td> <%=f_time%></td>
                 </tr>
                 <tr>
                     <th>End Time:</th>
-                    <td><%= t_time %></td>
+                    <td><%=t_time%></td>
                 </tr>
                 <tr>
                     <th>Location:</th>
@@ -84,17 +84,17 @@
 
                         <div class="input-field col s6">
                             <label for="dateInput">Date:</label>
-                            <input type="date" name="date" id="dateInput" value="<%= date %>" required>
+                            <input type="date" name="date" id="dateInput" value="<%= detail_date %>" required>
                         </div>
 
                         <div class="input-field col s6">
                             <label for="f_timeInput">Start Time:</label>
-                            <input type="time" name="f_time" id="f_timeInput" value="<%= f_time %>" required>
+                            <input type="time" name="f_time" id="f_timeInput" value="<%= df_time %>" required>
                         </div>
 
                         <div class="input-field col s6">
                             <label for="t_timeInput">End Time:</label>
-                            <input type="time" name="t_time" id="t_timeInput" value="<%= t_time %>" required>
+                            <input type="time" name="t_time" id="t_timeInput" value="<%= dt_time %>" required>
                         </div>
 
                         <div class="input-field col s6">
@@ -133,6 +133,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!-- initialize Materialize elements -->
-    <script> M.AutoInit();</script>
+    <script>
+    M.AutoInit();
+    </script>
 </body>
 </html>

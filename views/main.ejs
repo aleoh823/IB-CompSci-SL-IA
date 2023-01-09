@@ -23,39 +23,42 @@
             <h1>HealthBarn Foundation Healing Meals</h1>
             <h2>Cooking & Transporting </h2> 
             <body> Please review the available slots below and click on the button to sign up. Thank you!</body>
-            <table>
-                <thead>
+            <% if (inventory.length > 0) { %>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Location</th>
+                            <th>Available Slots</th>
+                            <th>Description</th>
+                            <th></th>
+                        </tr>
+    
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < inventory.length; i++) { %>
+                        <tr>
+                            <td><%= inventory[i].event %></td>
+                            <td><%= inventory[i].date %></td>
+                            <td><%= inventory[i].time %></td>
+                            <td><%= inventory[i].location %></td>
+                            <td><%= inventory[i].avail_slots %>
+                            </td>
+                            <td><%= inventory[i].description %></td>
+                            <td><a class="btn-small waves-effect waves-light" href=<%="/main/signup/" + inventory[i].event_id%> >
+                                <i class="material-icons right">edit</i>
+                                Signup
+                            </a></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% }else { %>
+                <br> <br> <br> No events right now. Check back later!
+            <% }%>
 
-                    <tr>
-                        <th>Event</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Location</th>
-                        <th>Available Slots</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <% for (let i = 0; i < inventory.length; i++) { %>
-                    <tr>
-                        <td><%= inventory[i].event %></td>
-                        <td><%= inventory[i].date %></td>
-                        <td><%= inventory[i].time %></td>
-                        <td><%= inventory[i].location %></td>
-                        <td><%= inventory[i].avail_slots %>
-                        </td>
-                        <td><%= inventory[i].description %></td>
-                        <td><a class="btn-small waves-effect waves-light" href=<%="/main/signup/" + inventory[i].event_id%> >
-                            <i class="material-icons right">edit</i>
-                            Signup
-                        </a></td>
-                    </tr>
-                    <% } %>
-
-                </tbody>
-            </table>
         </div>
     </div>
     
